@@ -1,0 +1,72 @@
+# synapse_vision_traffic_detector/config/params.yaml
+#
+# This file defines the parameters for the traffic_sign_detector_node.
+# These parameters will be loaded by the ROS 2 launch file when the node starts.
+
+traffic_sign_detector_node:
+  ros__parameters:
+    # Path to the YOLOv8 ONNX model file.
+    # This path is relative to the ROS 2 install share directory for your package.
+    # Ensure 'best.onnx' matches the name of your ONNX model file.
+    model_path: "install/synapse_vision_traffic_detector/share/synapse_vision_traffic_detector/models/best.onnx"
+
+    # Model and Creator Information:
+    # This model is a YOLOv8-based traffic sign detection model.
+    # Model Source: Reyga/Traffic_Sign_Detection on Hugging Face (https://huggingface.co/Reyga/Traffic_Sign_Detection)
+    # Credit to: Reyga
+
+    # List of class names that your ONNX model was trained on.
+    # The order of these names MUST EXACTLY MATCH the order provided by the model's .pt file.
+    # (As retrieved using the 'model.names' attribute).
+    # This model has 34 classes.
+    class_names:
+      - "Barrier Ahead"
+      - "Cattle"
+      - "Cycle Crossing"
+      - "Falling Rocks"
+      - "Give Way"
+      - "Horn Prohibited"
+      - "Hump"
+      - "Left Hair Pin Bend"
+      - "Left Reverse Bend"
+      - "Left hand curve"
+      - "Men at Work"
+      - "Narrow road ahead"
+      - "No Parking"
+      - "No Stopping"
+      - "Parking Lot Cars"
+      - "Pedestrian Crossing"
+      - "Pedestrian Prohibited"
+      - "Resting Place"
+      - "Right Hair Pin Bend"
+      - "Right Hand Curve"
+      - "Right Reverse Bend"
+      - "Round About"
+      - "School Ahead"
+      - "Slippery Road"
+      - "Speed Limit -100-"
+      - "Speed Limit -20-"
+      - "Speed Limit -50-"
+      - "Speed Limit -60-"
+      - "Speed Limit 30"
+      - "Speed limit -40-"
+      - "Steep Ascent"
+      - "Steep Desecnt"
+      - "Stop"
+      - "walking"
+
+    # Confidence threshold for detections (ranging from 0.0 to 1.0).
+    # Detections with a confidence score below this value will be discarded.
+    # Adjust this value to filter out weaker detections (e.g., 0.25 is a common starting point).
+    confidence_threshold: 0.25
+
+    # Non-Maximum Suppression (NMS) threshold for overlapping bounding boxes (ranging from 0.0 to 1.0).
+    # NMS helps remove redundant boxes detecting the same object.
+    # A higher value means more overlap is tolerated; a lower value means more aggressive suppression.
+    nms_threshold: 0.45
+
+    # Input dimensions that the ONNX model expects.
+    # These values MUST EXACTLY MATCH the 'img_size' you used during the ONNX export process.
+    # For YOLOv8, this is commonly 640 for both width and height.
+    input_width: 640
+    input_height: 640
