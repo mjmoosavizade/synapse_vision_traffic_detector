@@ -27,25 +27,6 @@ Before building, ensure you have the following installed on your system:
 
 ---
 
-## Project Structure
-
-
-.
-├── CMakeLists.txt
-├── config
-│   └── params.yaml        # Node parameters
-├── launch
-│   └── detector.launch.py # Launch file
-├── models
-│   └── best.onnx          # The ONNX model
-├── msg
-│   └── TrafficSign.msg    # Custom message definition
-├── package.xml
-├── README.md              # This file
-└── src
-└── traffic_sign_detector_node.cpp # The C++ source code
----
-
 ## Setup and Build Instructions
 
 Follow these steps to set up a ROS 2 workspace and build the package.
